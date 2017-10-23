@@ -1,0 +1,44 @@
+
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>{{'Add Service'|translate}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+
+<ion-select style="margin: auto;">
+<ion-option >{{'Category'|translate}} 1</ion-option>
+<ion-option >{{'Category'|translate}} 2</ion-option>
+</ion-select>
+
+<ion-item>
+<ion-label class="servtitle">{{'Service Title:'|translate}}</ion-label>
+<ion-input type="text"></ion-input>
+</ion-item>
+
+<p class="select">{{'Description:'|translate}}</p>
+<ion-row><ion-col col-3></ion-col>
+<ion-col col-9><textarea class="txtarea" placeholder="---------------------------------------------
+              -----------------"></textarea></ion-col>
+  </ion-row>
+  <ion-row style="margin-top: 20px;">
+    <ion-col col-4>
+  <img  src="assets/imgs/Artboard – 11.png">
+  <p class="textimg">{{'Add Photo'|translate}}</p>
+  </ion-col>
+  <ion-col col-4>
+  <img src="assets/imgs/Artboard – 12.png">
+  <p class="textimg">{{'Add Video'|translate}}</p>
+  </ion-col>
+  <ion-col col-4>
+  <img src="assets/imgs/Artboard – 13.png">
+  <p class="textimg">{{'Add Audio'|translate}}</p>
+  </ion-col>
+  </ion-row>
+  <button ion-button clear round class="confirm">{{'Confirm'|translate}}</button>
+  </ion-content>
+  

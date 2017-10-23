@@ -1,0 +1,21 @@
+
+<ion-header>
+
+  <ion-navbar>
+     <ion-title class="signup">{{'Sign Up'|translate}}<br><span class="personal">{{'(Personal Account)'|translate}}</span><br>
+      <span class="locationstitle">{{'Locations'|translate}}</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div style="margin-top: 30px;">
+  <button ion-button clear class="locationbtn" (click)="gomap()">{{'Location'|translate}} 1<img class="pin" src="assets/imgs/Mappin2.png"></button><br>
+  <button ion-button clear class="locationbtn">{{'Location'|translate}} 2<img class="pin" src="assets/imgs/Mappin2.png"></button><br>
+  <button ion-button clear class="locationbtn">{{'Location'|translate}} 3<img class="pin"src="assets/imgs/Mappin2.png"></button>  
+</div>
+<button ion-button round clear class="confirm">{{'Confirm'|translate}}</button>
+
+</ion-content>
