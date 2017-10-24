@@ -70,6 +70,10 @@ import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireModule} from "angularfire2";
 import {FIREBASE_CONFIG} from "./app.firebaseconfig";
 import { CommonProvider } from '../providers/common/common';
+import { UserProvider } from '../providers/user/user';
+import { PersonProvider } from '../providers/person/person';
+import {Geolocation} from "@ionic-native/geolocation";
+import {Camera} from "@ionic-native/camera";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');}
@@ -202,7 +206,11 @@ export function createTranslateLoader(http: Http) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ChatProvider,
     CommonMediaProvider,
-    CommonProvider
+    CommonProvider,
+    UserProvider,
+    PersonProvider,
+    Geolocation,
+    Camera
   ]
 })
 export class AppModule {}

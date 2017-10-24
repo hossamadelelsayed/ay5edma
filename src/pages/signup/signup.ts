@@ -3,6 +3,7 @@ import { ServSignupPage } from './../serv-signup/serv-signup';
 import { PerSignupPage } from './../per-signup/per-signup';
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
+import {Person} from "../../models/person/person";
 
 
 
@@ -20,7 +21,9 @@ export class SignupPage {
     console.log('ionViewDidLoad SignupPage');
   }
 gisignup(){
-  this.navCtrl.push(PerSignupPage);
+  this.navCtrl.push(PerSignupPage,{
+    mode : Person.USER_MODE
+  });
 }
 servsignup(){
   this.navCtrl.push(ServSignupPage);

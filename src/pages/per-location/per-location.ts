@@ -1,6 +1,8 @@
 import { PerMapPage } from './../per-map/per-map';
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams, ModalController} from 'ionic-angular';
+import {Person} from "../../models/person/person";
+import {Location} from "../../models/person/location";
 
 /**
  * Generated class for the PerLocationPage page.
@@ -16,13 +18,23 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class PerLocationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public person : Person;
+  constructor(public navCtrl: NavController, public navParams: NavParams ,
+              public modalCtrl : ModalController) {
+    this.person = navParams.data.person ;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerLocationPage');
   }
   gomap(){
-    this.navCtrl.push(PerMapPage);
+    let modal = this.modalCtrl.create(PerMapPage);
+    modal.present();
+    modal.onDidDismiss((location : Location)=>{
+      this.person.locations.push(location);
+    });
+  }
+  confirm(){
+    this.navCtrl.pop();
   }
 }

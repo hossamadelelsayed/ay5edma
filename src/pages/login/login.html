@@ -11,17 +11,17 @@
 <ion-content padding>
 <h2 class="welcome">{{'Welcome to'|translate}}<br><span class="anyservices">{{'any Services'|translate}}</span></h2>
 <form style="margin-top: 40px;padding-left: 25px;
-padding-right: 25px;">
+padding-right: 25px;" #f="ngForm" >
   <ion-item>
     <ion-label  stacked class="label">{{'Mobile Number'|translate}}</ion-label>
-    <ion-input type="tel"></ion-input>
+    <ion-input [(ngModel)]="mobile" name="mobile" type="tel" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label  stacked class="label">{{'Password'|translate}}</ion-label>
-    <ion-input type="password" ></ion-input>
+    <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
   </ion-item>
-  <button ion-button round clear class="signin" (click)="goperhome()">{{'Sign In'|translate}}</button>
+  <button ion-button [disabled]="!f.valid" round clear class="signin" (click)="goperhome()">{{'Sign In'|translate}}</button>
   <a class="forget" (click)="goforgetpass()">{{'Forget My Password ?'|translate}}</a>
 </form>
 </ion-content>

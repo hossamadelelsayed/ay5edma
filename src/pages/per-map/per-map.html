@@ -1,17 +1,17 @@
 
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{'Location'|translate}} 1</ion-title>
+    <ion-title>{{'Location'|translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
+<ion-content>
+  <div #map id="map" class="map">
+  </div>
+  <form #f="ngForm">
+    <ion-input name="address" [(ngModel)]="address" type="text" placeholder="Enter Location..." class="input"></ion-input>
 
-
-<ion-content padding>
-<ion-input type="text" placeholder="Enter Location..." class="input"></ion-input>
-<div>
-  <img src="assets/imgs/map.png">
-</div>
-<button ion-button round clear class="confirm">{{'Confirm'|translate}}</button>
+    <button [disabled]="!address" ion-button round clear class="confirm" (click)="confirm()">{{'Confirm'|translate}}</button>
+  </form>
 </ion-content>
+

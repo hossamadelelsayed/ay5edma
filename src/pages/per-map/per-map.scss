@@ -1,16 +1,23 @@
 page-per-map {
+  .map {
+    height: 80%
+  }
+  #map {
+    width: 100%;
+    height: 80%;
+  }
 .header-md::after{
     background-image:none;
 }
 .toolbar-title{
     text-align: center;
-  
+
     font-size: 1.8rem;
     color: $color-orange;
 }
 .toolbar-background{
     background-color: $color-background;
-}    
+}
     .content{
     background-color: $color-background;
 }

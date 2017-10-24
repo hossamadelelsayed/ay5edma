@@ -1,6 +1,6 @@
 
 <ion-header>
-  
+
     <ion-navbar>
       <ion-title >
         <ion-row>
@@ -19,22 +19,22 @@
           <ion-col col-2 class="titlename" (click)="secondHome()">
               {{'Categories'|translate}}
           </ion-col>
-        </ion-row>     
+        </ion-row>
       </ion-title>
     </ion-navbar>
   </ion-header>
-  
+
   <ion-content padding>
-  
-  <ion-row class="rowitem">
+
+  <ion-row *ngFor="let specialAdd of specialAdds" class="rowitem">
   <ion-col col-2>
   <img class="mobile" src="assets/imgs/LGG3.jpg">
   </ion-col>
   <ion-col>
-  <p class="text">Iphone 6s 64G in perfect condition</p>
-  <span class="pricemobile">$7500</span>
-  <ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-  <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
+  <p class="text">{{specialAdd.title}} &nbsp; : &nbsp; {{specialAdd.description}}</p>
+  <span *ngIf="specialAdd.price > 0" class="pricemobile">{{specialAdd.price}}</span>
+  <ion-icon class="icons" class="icons" name="call" ></ion-icon>
+  <ion-icon class="icons" class="icons" name="mail" (click)="goToChat(specialAdd.user.person)"></ion-icon>
   </ion-col>
   </ion-row>
   <ion-row class="rowitem">
@@ -44,46 +44,12 @@
   <ion-col>
   <p class="text">Iphone 6s 64G in perfect condition</p>
   <span class="pricemobile">$7500</span>
-  <ion-icon class="icons" class="icons" name="call" ></ion-icon> 
+  <ion-icon class="icons" class="icons" name="call" ></ion-icon>
   <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
   </ion-col>
   </ion-row>
-  <ion-row class="rowitem">
-  <ion-col col-2>
-  <img class="mobile" src="assets/imgs/LGG3.jpg">
-  </ion-col>
-  <ion-col>
-  <p class="text">Iphone 6s 64G in perfect condition</p>
-  <span class="pricemobile">$7500</span>
-  <ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-  <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-  </ion-col>
-  </ion-row>
-  <ion-row class="rowitem">
-  <ion-col col-2>
-  <img class="mobile" src="assets/imgs/LGG3.jpg">
-  </ion-col>
-  <ion-col>
-  <p class="text">Iphone 6s 64G in perfect condition</p>
-  <span class="pricemobile">$7500</span>
-  <ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-  <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-  </ion-col>
-  </ion-row>
-  <ion-row class="rowitem">
-  <ion-col col-2>
-  <img class="mobile" src="assets/imgs/LGG3.jpg">
-  </ion-col>
-  <ion-col>
-  <p class="text">Iphone 6s 64G in perfect condition</p>
-  <span class="pricemobile">$7500</span>
-  <ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-  <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-  </ion-col>
-  </ion-row>
-  
-  
-  
-  
+
+
+
+
   </ion-content>
-  

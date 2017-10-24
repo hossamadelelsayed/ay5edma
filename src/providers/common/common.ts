@@ -21,7 +21,7 @@ export class CommonProvider {
     let toast = this.toastCtrl.create({
       message: txt,
       duration: 1000,
-      position: 'middle'
+      position: 'bottom'
     });
     toast.present();
   }

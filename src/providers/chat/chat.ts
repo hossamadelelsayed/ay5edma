@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import * as firebase from "firebase";
 import {Events} from "ionic-angular";
 import {Person} from "../../models/person/person";
+import {AngularFireAuth} from "angularfire2/auth";
 
 /*
  Generated class for the ChatProvider provider.
@@ -45,19 +46,19 @@ export class ChatProvider {
     });
     return promise;
   }
-  sendMessageToAll(chatMessage : ChatMessage):Promise<any>{
+  private sendMessageToAll(chatMessage : ChatMessage):Promise<any>{
     let promises : Promise<any>[] = [] ;
     let promise = new Promise((resolve, reject) => {
       promises.push(this.sendMessageToSender(chatMessage),
-        this.sendMessageToReceiver(chatMessage),
-        this.sendMessageToReceivedChat(chatMessage));
+                    this.sendMessageToReceiver(chatMessage),
+                    this.sendMessageToReceivedChat(chatMessage));
       Promise.all(promises).then((res)=>{
         resolve(res);
       }).catch((err)=>reject(err));
     });
     return promise;
   }
-  sendMessageToSender(chatMessage : ChatMessage):Promise<any>{
+  private sendMessageToSender(chatMessage : ChatMessage):Promise<any>{
     let promise = new Promise((resolve, reject) => {
       let senderRef = this.fireDatabase.ref('chat/'+chatMessage.sender+'/'+chatMessage.receiver+'/messages');
       senderRef.push(chatMessage)
@@ -66,7 +67,7 @@ export class ChatProvider {
     });
     return promise ;
   }
-  sendMessageToReceiver(chatMessage : ChatMessage):Promise<any>{
+  private sendMessageToReceiver(chatMessage : ChatMessage):Promise<any>{
     let promise = new Promise((resolve, reject) => {
       let senderRef = this.fireDatabase.ref('chat/'+chatMessage.receiver+'/'+chatMessage.sender+'/messages');;
       senderRef.push(chatMessage)
@@ -75,7 +76,7 @@ export class ChatProvider {
     });
     return promise ;
   }
-  sendMessageToReceivedChat(chatMessage : ChatMessage):Promise<any>{
+  private sendMessageToReceivedChat(chatMessage : ChatMessage):Promise<any>{
     let promise = new Promise((resolve, reject) => {
       let senderRef = this.fireDatabase.ref('receivedChat/'+chatMessage.receiver+'/'+chatMessage.sender);
       senderRef.child('msg').set(chatMessage)
