@@ -17,6 +17,8 @@ import {User} from "../../models/user/user";
 */
 @Injectable()
 export class PersonProvider {
+  public activePerson :Person = null;
+
   public personLoginUrl : string = MainService.baseUrl+"login";
   public getPersonUrl : string = MainService.baseUrl+"getuser/";
 

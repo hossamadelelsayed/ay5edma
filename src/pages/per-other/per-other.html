@@ -1,48 +1,19 @@
 
 <ion-header>
-    
       <ion-navbar>
         <ion-title >
        {{'Other Categories'|translate}}
         </ion-title>
       </ion-navbar>
     </ion-header>
-    
-    
     <ion-content padding>
  <ion-input type="text" placeholder="{{'Adds'|translate}}" class="input"></ion-input>
-            
-    <ion-list>
-      <ion-row>
-      <ion-col col-6 >
-          <img src="assets/imgs/iPhone 67 – 12.png">
-          <p>{{'Fashion'|translate}}</p>
+ <ion-list>
+      <ion-row >
+      <ion-col col-6 *ngFor="let category of salesCategory" (click)="goitemdetails(category.id)">
+          <img [src]="mainService.imageUrl+category.img">
+          <p>{{category.name_ar}}</p>
       </ion-col>
-      <ion-col col-6 >
-          <img src="assets/imgs/iPhone 67 – 14.png">
-          <p>{{'Pets'|translate}}</p>
-     </ion-col>
       </ion-row>
-      <ion-row>
-          <ion-col col-6 >
-              <img src="assets/imgs/iPhone 67 – 15.png">
-              <p>{{'Kids & Babies'|translate}}</p>
-          </ion-col>
-          <ion-col col-6 >
-              <img src="assets/imgs/iPhone 67 – 18.png">
-              <p>{{'Sporting Goods'|translate}}</p>
-         </ion-col>
-          </ion-row>
-          <ion-row>
-              <ion-col col-6 (click)="goitemdetails()">
-                  <img src="assets/imgs/iPhone 67 – 16.png">
-                  <p>{{'Mobile Phones'|translate}}</p>
-              </ion-col>
-              <ion-col col-6 >
-                  <img src="assets/imgs/iPhone 67 – 17.png">
-                  <p>{{'Cosmetics'|translate}}</p>
-             </ion-col>
-              </ion-row>
     </ion-list>
     </ion-content>
-    

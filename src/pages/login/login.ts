@@ -37,6 +37,7 @@ export class LoginPage {
   goperhome(){
     this.personService.personLogin(new PersonLoginCred(this.mobile,this.password)).subscribe((person:any)=>{
       console.log(person);
+      this.personService.activePerson = this.personService.preparePersonObj(person);
       this.personService.FBLogin(new PersonFBCredentials(person.email,this.password)).then(()=>{
         this.chatService.attachReceivedChatListener();
         this.commonService.successToast();

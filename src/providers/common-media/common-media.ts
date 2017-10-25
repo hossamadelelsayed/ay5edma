@@ -3,6 +3,9 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Camera} from "@ionic-native/camera";
 import {AlertController} from "ionic-angular";
+import {MediaCapture, CaptureVideoOptions, MediaFile, CaptureError} from "@ionic-native/media-capture";
+import {CommonProvider} from "../common/common";
+import {File} from "@ionic-native/file";
 
 /*
   Generated class for the CommonMediaProvider provider.
@@ -14,7 +17,8 @@ import {AlertController} from "ionic-angular";
 export class CommonMediaProvider {
 
   constructor(public http: Http , public camera : Camera ,
-              public alertCtrl : AlertController) {
+              public alertCtrl : AlertController , public mediaCapture : MediaCapture ,
+              public file : File ,public commonService : CommonProvider) {
     console.log('Hello CommonMediaProvider Provider');
   }
   galleryOrCamera() : Promise<any> {
@@ -73,4 +77,56 @@ export class CommonMediaProvider {
     return promise;
 
   }
+
+  recordVideo():Promise<string>{
+    let promise = new Promise((resolve, reject )=>{
+      let options: CaptureVideoOptions = { limit: 3 };
+      this.mediaCapture.captureVideo()
+        .then(
+          (data: MediaFile[]) => {
+            console.log(data);
+            this.readFileAsBase64(data[0].fullPath , data[0].name )
+              .then((res)=>resolve(res)).catch((err)=>reject(err));
+          },
+          (err: CaptureError) => reject(err)
+        );
+    });
+    return promise ;
+  }
+  recordAudio():Promise<string>{
+    let promise = new Promise((resolve, reject )=>{
+      let options: CaptureVideoOptions = { limit: 3 };
+      this.mediaCapture.captureAudio()
+        .then(
+          (data: MediaFile[]) => {
+            console.log(data);
+            this.readFileAsBase64(data[0].fullPath , data[0].name )
+              .then((res)=>resolve(res)).catch((err)=>reject(err));
+          },
+          (err: CaptureError) => reject(err)
+        );
+    });
+    return promise ;
+  }
+  private readFileAsBase64(fullPath : string , fileName : string):Promise<string>
+  {
+    let promise = new Promise((resolve, reject )=>{
+      this.commonService.presentLoading('Please Wait ...');
+      this.file.readAsDataURL(this.splitToLastBackSlash(fullPath),fileName).then((res)=>{
+        resolve(res);
+        this.commonService.dismissLoading();
+      }).catch((err :any) => reject(err));
+    });
+    return promise ;
+  }
+  private splitToLastBackSlash(str : string) : string
+  {
+    let target = str;
+    let rest = target.substring(0, target.lastIndexOf("/"));
+    console.log(rest);
+    return rest ;
+  }
+
+
+
 }

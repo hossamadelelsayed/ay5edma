@@ -74,6 +74,8 @@ import { UserProvider } from '../providers/user/user';
 import { PersonProvider } from '../providers/person/person';
 import {Geolocation} from "@ionic-native/geolocation";
 import {Camera} from "@ionic-native/camera";
+import {MediaCapture} from "@ionic-native/media-capture";
+import {File} from "@ionic-native/file";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');}
@@ -210,7 +212,9 @@ export function createTranslateLoader(http: Http) {
     UserProvider,
     PersonProvider,
     Geolocation,
-    Camera
+    Camera,
+    MediaCapture,
+    File
   ]
 })
 export class AppModule {}

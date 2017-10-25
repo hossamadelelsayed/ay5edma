@@ -10,61 +10,18 @@
 
 <ion-content padding>
 
-<ion-row>
+<ion-row *ngFor="let item of catItems">
 <ion-col col-2>
-<img class="mobile" src="assets/imgs/LGG3.jpg">
+<img class="mobile" *ngIf="item.images.length > 0" [src]="mainService.imageUrl+item.images[0].image_url">
 </ion-col>
 <ion-col>
-<p class="text">Iphone 6s 64G in perfect condition</p>
-<span class="pricemobile">$7500</span>
-<ion-icon class="icons" class="icons" name="call" ></ion-icon> 
+<p class="text">{{item.title}}</p>
+<span class="pricemobile">{{item.price}}</span>
+<ion-icon class="icons" class="icons" name="call" ></ion-icon>
 <ion-icon class="icons" class="icons" name="mail" ></ion-icon>
 </ion-col>
 </ion-row>
-<ion-row>
-<ion-col col-2>
-<img class="mobile" src="assets/imgs/LGG3.jpg">
-</ion-col>
-<ion-col>
-<p class="text">Iphone 6s 64G in perfect condition</p>
-<span class="pricemobile">$7500</span>
-<ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-<ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-</ion-col>
-</ion-row>
-<ion-row>
-<ion-col col-2>
-<img class="mobile" src="assets/imgs/LGG3.jpg">
-</ion-col>
-<ion-col>
-<p class="text">Iphone 6s 64G in perfect condition</p>
-<span class="pricemobile">$7500</span>
-<ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-<ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-</ion-col>
-</ion-row>
-<ion-row>
-<ion-col col-2>
-<img class="mobile" src="assets/imgs/LGG3.jpg">
-</ion-col>
-<ion-col>
-<p class="text">Iphone 6s 64G in perfect condition</p>
-<span class="pricemobile">$7500</span>
-<ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-<ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-</ion-col>
-</ion-row>
-<ion-row>
-<ion-col col-2>
-<img class="mobile" src="assets/imgs/LGG3.jpg">
-</ion-col>
-<ion-col>
-<p class="text">Iphone 6s 64G in perfect condition</p>
-<span class="pricemobile">$7500</span>
-<ion-icon class="icons" class="icons" name="call" ></ion-icon> 
-<ion-icon class="icons" class="icons" name="mail" ></ion-icon>
-</ion-col>
-</ion-row>
+
 
 
 

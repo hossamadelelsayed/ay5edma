@@ -54,7 +54,8 @@ export class PerSignupPage {
   }
   confirm(){
     this.personService.FBRegister(new PersonFBCredentials(this.person.email,this.person.password)).then(()=>{
-      this.handlePersonRegister(this.afAuth.auth.currentUser.uid).subscribe(()=>{
+      this.handlePersonRegister(this.afAuth.auth.currentUser.uid).subscribe((person)=>{
+        this.personService.activePerson = this.personService.preparePersonObj(person);
         this.chatService.attachReceivedChatListener();
         this.commonService.successToast();
         // case user only

@@ -20,7 +20,7 @@ export abstract class Person {
        this.mobile != null  &&
       this.locations.length > 0)
       return true ;
-    // else return false ;
+     else return false ;
 
      }
 }
