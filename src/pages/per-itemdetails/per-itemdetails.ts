@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
 import {UserProvider} from "../../providers/user/user";
 import {MainService} from "../../providers/main-service";
+import {ServChatPage} from "../serv-chat/serv-chat";
+import {PersonProvider} from "../../providers/person/person";
+import {AdsDetailsPage} from "../ads-details/ads-details";
 
 /**
  * Generated class for the PerItemdetailsPage page.
@@ -19,7 +22,8 @@ export class PerItemdetailsPage {
   public catItems : any[] = [];
   public catID : number ;
   public mainService  = MainService ;
-  constructor(public navCtrl: NavController, public navParams: NavParams , public userService : UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , public userService : UserProvider ,
+              public personService : PersonProvider) {
     this.catID = this.navParams.data ;
   }
 
@@ -29,6 +33,12 @@ export class PerItemdetailsPage {
       this.catItems = res ;
       console.log(res);
     });
+  }
+  goToChat(person : any){
+    this.navCtrl.push(ServChatPage,this.personService.preparePersonObj(person));
+  }
+  goToAddDetails(item : any){
+    this.navCtrl.push(AdsDetailsPage,item);
   }
 
 }

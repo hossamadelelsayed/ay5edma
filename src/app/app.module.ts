@@ -76,6 +76,8 @@ import {Geolocation} from "@ionic-native/geolocation";
 import {Camera} from "@ionic-native/camera";
 import {MediaCapture} from "@ionic-native/media-capture";
 import {File} from "@ionic-native/file";
+import {AdsDetailsPage} from "../pages/ads-details/ads-details";
+import {StreamingMedia} from "@ionic-native/streaming-media";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');}
@@ -128,7 +130,8 @@ export function createTranslateLoader(http: Http) {
     MyaddsPage,
     YouraddsPage,
     DeleteaddsPage,
-    PerFirsthomePage
+    PerFirsthomePage,
+    AdsDetailsPage
 
   ],
   imports: [
@@ -196,10 +199,8 @@ export function createTranslateLoader(http: Http) {
     MyaddsPage,
     YouraddsPage,
     DeleteaddsPage,
-    PerFirsthomePage
-
-
-
+    PerFirsthomePage,
+    AdsDetailsPage
   ],
   providers: [
     StatusBar,
@@ -214,7 +215,8 @@ export function createTranslateLoader(http: Http) {
     Geolocation,
     Camera,
     MediaCapture,
-    File
+    File,
+    StreamingMedia
   ]
 })
 export class AppModule {}
